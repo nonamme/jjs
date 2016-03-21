@@ -1,4 +1,4 @@
-task documentation: do
+task :documentation do
   rake doc:app
 end
 
