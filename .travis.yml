@@ -3,7 +3,7 @@ language: ruby
 rvm:
   - 2.2.3
 script:
-#  - bundle exec rspec spec
+  - bundle exec rspec spec
   - bundle exec rubocop --display-cop-names
 gemfile:
   - Gemfile
