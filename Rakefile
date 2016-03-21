@@ -1,6 +1,6 @@
 desc 'Make app documentation'
 task :documentation do
-  rake doc:app
+  #rake doc:app
 end
 
 
