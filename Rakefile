@@ -1,3 +1,3 @@
-task 'default' do
+task default: do
   rake do:app
 end
