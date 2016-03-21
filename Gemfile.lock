@@ -193,11 +193,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-<<<<<<< HEAD
   devise
-=======
   factory_girl_rails
->>>>>>> Add Rspec to an app
   jbuilder (~> 2.0)
   jquery-rails
   pg
