@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: jjs_development
+  pool: 5
+  username: username
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: jjs_test
+  pool: 5
+  username: username
+  password: password

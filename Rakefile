@@ -1,13 +1,6 @@
-desc 'Make app documentation'
-task :documentation do
-  #rake doc:app
-end
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
+require File.expand_path('../config/application', __FILE__)
 
-task :default => ['documentation']
-
-
-# desc "One line task description"
-# task :name_of_task do
-#   # Your code goes here
-# end
+Rails.application.load_tasks
