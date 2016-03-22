@@ -20,6 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'spring'
   gem 'rubocop', require: false
+  gem "erb2haml", :group => :development
 end
 
 group :test do
