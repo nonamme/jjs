@@ -43,7 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
-group :development do 
+group :development do
   gem 'web-console', '~> 2.0'
 end
 

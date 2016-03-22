@@ -1,5 +1,5 @@
 class AddReferenceToCourse < ActiveRecord::Migration
   def change
-    add_reference :courses, :course_category, index: true, foreign_key: true	  
+    add_reference :courses, :course_category, index: true, foreign_key: true
   end
 end
