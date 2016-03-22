@@ -40,10 +40,13 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 end
 
+group :development do 
+  gem 'web-console', '~> 2.0'
+end
+
 group :test do
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 3.1', require: false
 end
