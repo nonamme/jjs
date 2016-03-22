@@ -16,12 +16,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'
   gem 'factory_girl_rails'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rubocop', require: false
 end
 
 group :test do
+  gem 'web-console', '~> 2.0'
   gem 'shoulda-matchers', '~> 3.1'
 end
 
