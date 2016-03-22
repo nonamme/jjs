@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322175559) do
+ActiveRecord::Schema.define(version: 20160322195249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "course_categories", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false, index: {name: "index_users_on_email", unique: true}
@@ -48,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160322175559) do
     t.float    "estimated_finish_time"
     t.boolean  "is_published",          default: false
     t.integer  "owner_id",              index: {name: "fk__courses_owner_id"}, foreign_key: {references: "users", name: "fk_courses_owner_id", on_update: :no_action, on_delete: :no_action}
-    t.integer  "course_category_id",    index: {name: "index_courses_on_course_category_id"}, foreign_key: {references: "course_categories", name: "fk_courses_course_category_id", on_update: :no_action, on_delete: :no_action}
+    t.integer  "course_category_id",    index: {name: "index_courses_on_course_category_id"} # foreign key references "course_categories" (below)
   end
   add_index "courses", ["owner_id"], name: "index_courses_on_owner_id"
 
@@ -60,17 +53,27 @@ ActiveRecord::Schema.define(version: 20160322175559) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "course_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "course_id",   index: {name: "fk__course_categories_course_id"}, foreign_key: {references: "courses", name: "fk_course_categories_course_id", on_update: :no_action, on_delete: :no_action}
+  end
+  add_foreign_key "courses", "course_categories", column: "course_category_id", name: "fk_courses_course_category_id", on_update: :no_action, on_delete: :no_action
+
   create_table "progress", id: false, force: :cascade do |t|
     t.integer "user_id",    null: false
     t.integer "chapter_id", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id",       index: {name: "index_subscriptions_on_user_id"}, foreign_key: {references: "users", name: "fk_rails_933bdff476", on_update: :no_action, on_delete: :no_action}
-    t.integer  "course_id",     index: {name: "index_subscriptions_on_course_id"}, foreign_key: {references: "courses", name: "fk_rails_22140e69f4", on_update: :no_action, on_delete: :no_action}
+    t.integer  "course_id",      index: {name: "index_subscriptions_on_course_id"}, foreign_key: {references: "courses", name: "fk_rails_22140e69f4", on_update: :no_action, on_delete: :no_action}
     t.datetime "subscribed_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "participant_id", index: {name: "fk__subscriptions_participant_id"}, foreign_key: {references: "users", name: "fk_subscriptions_participant_id", on_update: :no_action, on_delete: :no_action}
   end
+  add_index "subscriptions", ["participant_id"], name: "index_subscriptions_on_participant_id"
 
 end
