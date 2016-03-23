@@ -20,7 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'spring'
   gem 'rubocop', require: false
-  gem 'erb2haml', group: :development
+  gem 'erb2haml'
 end
 
 group :development do
@@ -28,7 +28,6 @@ group :development do
 end
 
 group :test do
-  gem 'web-console', '~> 2.0'
   gem 'shoulda-matchers', '~> 3.1', require: false
 end
 
